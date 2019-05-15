@@ -20,6 +20,7 @@
         <h1 style="color:	#DAA520; text-align:center; margin-bottom:30px; border-bottom:1px solid white; padding-bottom:10px;">
             Mars Information
         </h1>
+        {% if mars_data %}
         <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -74,6 +75,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Mars Hemispheres</h3>
                     </div>
+                    {% if mars_data.hemisphere_imgs %}
                     <div class="panel-body">
                         <div class="thumbnail" style="width: 50%; float:left;">
                             <img src= {{ mars_data.hemisphere_imgs[0].img_url }} alt="Hemisphere1">
@@ -100,9 +102,11 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </body>
 

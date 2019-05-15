@@ -1,7 +1,7 @@
 #import dependancies
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import pymongo
-import scrape
+from scrape_mars import scrape
 
 # create instance of Flask app
 app = Flask(__name__)
@@ -13,15 +13,17 @@ collection = db.mars_data_entries
 
 @app.route("/")
 def home():
-    mars_data = list(db.collection.find())[0]
-    return  render_template('index.html', mars_data=mars_data)
+    mars_data = dict(collection.find_one())
+    # print(mars_data)
+    return render_template('index.html', mars_data=mars_data)
 
 @app.route("/scrape")
 def web_scrape():
-    db.collection.remove({})
-    mars_data = scrape.scrape()
-    db.collection.insert_one(mars_data)
-    return  render_template('scrape.html')
+    # collection.drop({})
+    mars_data = scrape()
+    collection.insert_one(mars_data)
+    # return  render_template('index.html')
+    return redirect("/", code=302)
 
 if __name__ == "__main__":
     app.run(debug=True)

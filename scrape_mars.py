@@ -9,8 +9,8 @@ def init_browser():
     executable_path = {"executable_path": "chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=True)
 
-def scrape ():
-    """Scrapes various websites for information about Mars, and returns data in a dictionary"""
+def scrape():
+    """Scraped various websites for information about Mars, and returned data in a dictionary"""
     
     browser = init_browser()
     mars_data = {}
