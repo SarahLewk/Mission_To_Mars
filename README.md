@@ -1,5 +1,5 @@
 # Mission_To_Mars
-## Web Scraping Homework
+## Web Scraping Project
 
 https://sarahlewk.github.io/Mission_To_Mars/
 
